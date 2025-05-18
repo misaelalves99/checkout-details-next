@@ -3,7 +3,6 @@
 import { NextResponse } from 'next/server';
 import { Product } from '../../../types/product';
 
-// Mock dos produtos (mesmo do arquivo /api/products/route.ts)
 const products: Product[] = [
   {
     id: 1,
