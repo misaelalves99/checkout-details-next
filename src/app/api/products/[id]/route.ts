@@ -77,15 +77,12 @@ const products: Product[] = [
   },
 ];
 
-export async function GET(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
-  const id = parseInt(params.id);
+export async function GET(request: Request, context: { params: { id: string } }) {
+  const id = parseInt(context.params.id);
   const product = products.find((p) => p.id === id);
 
   if (!product) {
-    return NextResponse.json({ error: 'Produto não encontrado' }, { status: 404 });
+    return NextResponse.json({ error: "Produto não encontrado" }, { status: 404 });
   }
 
   return NextResponse.json(product, { status: 200 });
