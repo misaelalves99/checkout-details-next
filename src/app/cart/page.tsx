@@ -3,13 +3,13 @@
 'use client';
 
 import React from 'react';
-import { useCart } from '../context/CartContext'; // 06-Hooks - Contexto para gerenciamento do carrinho
-import CartItem from '../components/CartItem'; // 03-Arrays - Componente CartItem para exibição de itens do carrinho
-import styles from './CartPage.module.css'; // Estilização com CSS Module
-import { CartItem as CartItemType } from '../types/cart'; // Importação da tipagem
+import { useCart } from '../context/CartContext';
+import CartItem from '../components/CartItem';
+import styles from './CartPage.module.css';
+import { CartItem as CartItemType } from '../types/cart';
 
 const CartPage: React.FC = () => {
-  const { cartItems, removeFromCart, clearCart } = useCart(); // 06-Hooks - Uso do contexto de carrinho
+  const { cartItems, removeFromCart, clearCart } = useCart();
 
   return (
     <div className={styles.cartPageContainer}>
