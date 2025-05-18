@@ -17,7 +17,7 @@ export default async function ProductsPage() {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Lista de Produtos</h1>
-      <ProductList overrideProducts={products} />
+      <ProductList products={products} />
     </div>
   );
 }

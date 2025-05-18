@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import ProductList from "./components/ProductList";
 import { Product } from "./types/product";
 import styles from "./HomePage.module.css";
+import { getProducts } from "./lib/api/products"; // IMPORTAR AQUI
 
 const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -15,12 +16,10 @@ const HomePage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("/api/product");
-        if (!response.ok) throw new Error("Erro ao buscar produtos");
-        const data = await response.json();
+        const data = await getProducts();
         setProducts(data);
       } catch (error) {
-        console.error(error);
+        console.error("Erro ao carregar produtos:", error);
       }
     };
 
@@ -43,17 +42,10 @@ const HomePage = () => {
 
       <section className={styles.featuredSection}>
         <h2 className={styles.sectionTitle}>Produtos em Destaque</h2>
-        <ProductList overrideProducts={products.slice(0, 6)} />
+        <ProductList products={products.slice(0, 6)} />
       </section>
     </main>
   );
 };
 
 export default HomePage;
-
-// 01-Estruturas e Tratamento -
-// 03-Arrays -
-// 05-Formulários e Eventos -
-// 06-Hooks -
-// 08-Api -
-// 09-Renderização Condicional -

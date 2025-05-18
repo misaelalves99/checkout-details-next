@@ -12,19 +12,19 @@ import styles from "./ProductList.module.css";
 import { CartItem } from "../types/cart";
 
 interface ProductListProps {
-  overrideProducts?: Product[];
+  products: Product[];
 }
 
-const ProductList: React.FC<ProductListProps> = ({ overrideProducts = [] }) => {
-  const { setProducts, products } = useProduct();
+const ProductList: React.FC<ProductListProps> = ({ products }) => {
+  const { setProducts, products: contextProducts } = useProduct();
   const { addToCart } = useCart();
   const router = useRouter();
 
   useEffect(() => {
-    if (overrideProducts.length > 0) {
-      setProducts(overrideProducts);
+    if (products.length > 0) {
+      setProducts(products);
     }
-  }, [overrideProducts]);
+  }, [products, setProducts]);
 
   const handleBuyNow = (product: Product) => {
     const cartItem: CartItem = {
@@ -41,13 +41,13 @@ const ProductList: React.FC<ProductListProps> = ({ overrideProducts = [] }) => {
     router.push(`/products/${product.id}`);
   };
 
-  if (!products.length) {
+  if (!contextProducts.length) {
     return <p className={styles.noProductsMessage}>Nenhum produto encontrado.</p>;
   }
 
   return (
     <div className={styles.productGrid}>
-      {products.map((product) => (
+      {contextProducts.map((product) => (
         <ProductCard key={product.id} product={product} onBuyNow={handleBuyNow} />
       ))}
     </div>
