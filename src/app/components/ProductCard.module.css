@@ -125,10 +125,6 @@
   background-color: #218838;
 }
 
-button:focus {
-  outline: none;
-}
-
 /* Responsividade */
 @media (max-width: 768px) {
   .buttonGroup {
