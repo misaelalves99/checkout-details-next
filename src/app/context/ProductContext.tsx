@@ -5,30 +5,25 @@
 import React, { createContext, useContext, useState, ReactNode, Dispatch, SetStateAction, } from "react";
 
 import { Product } from "../types/product";
-import { getProducts } from "../lib/api/products"; // ✅ Nova importação do client-side
+import { getProducts } from "../lib/api/products";
 
-// Tipagem do contexto para os produtos
 type ProductContextType = {
   products: Product[];
-  setProducts: Dispatch<SetStateAction<Product[]>>; // uso de Dispatch para maior flexibilidade
-  fetchProducts: () => void; // função auxiliar para buscar produtos da API
+  setProducts: Dispatch<SetStateAction<Product[]>>;
+  fetchProducts: () => void;
 };
 
-// Criação do contexto com valor inicial undefined
 export const ProductContext = createContext<ProductContextType | undefined>(
   undefined
 );
 
-// Tipagem das props para o Provider
 type ProductProviderProps = {
   children: ReactNode;
 };
 
-// Provider que armazena os produtos no estado global
 export const ProductProvider = ({ children }: ProductProviderProps) => {
   const [products, setProducts] = useState<Product[]>([]);
 
-  // Função que consome a API e atualiza os produtos
   const fetchProducts = () => {
     getProducts()
       .then(setProducts)
@@ -44,7 +39,6 @@ export const ProductProvider = ({ children }: ProductProviderProps) => {
   );
 };
 
-// Hook customizado para acessar o contexto
 export const useProduct = () => {
   const context = useContext(ProductContext);
   if (!context) {
@@ -52,6 +46,3 @@ export const useProduct = () => {
   }
   return context;
 };
-
-// 01-Estruturas e Tratamento -
-// 06-Hooks -

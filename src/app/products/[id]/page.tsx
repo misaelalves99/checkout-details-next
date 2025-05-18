@@ -6,18 +6,15 @@ import React, { useEffect, useState } from 'react';
 import { useCart } from '../../context/CartContext';
 import ProductDetails from '../../components/ProductDetails';
 import styles from './ProductPage.module.css';
+import { Product } from '../../types/product';
 
-// Importe o tipo Product corretamente
-import { Product } from '../../types/product'; // Adicionado para importar o tipo Product
-
-// O Next.js 14+ usa diretamente o parâmetro da URL no componente
-const ProductPage = ({ params }: { params: { id: string } }) => { // Acessa o parâmetro 'id' da rota
+const ProductPage = ({ params }: { params: { id: string } }) => {
   const { addToCart } = useCart();
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>('');
 
-  const productId = params.id; // Usa 'params' para acessar o 'id' diretamente
+  const productId = params.id;
 
   useEffect(() => {
     const loadProduct = async () => {

@@ -15,5 +15,3 @@ export const getCurrentMonth = (): number => {
 export const getCurrentDay = (): number => {
   return new Date().getDate();
 };
-
-// 02-Funções e Métodos -

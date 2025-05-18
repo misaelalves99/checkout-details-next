@@ -19,6 +19,3 @@ export class Product {
     return `$${this.price.toFixed(2)}`;
   }
 }
-
-// 02-Funções e Métodos -
-// 04-Objetos -

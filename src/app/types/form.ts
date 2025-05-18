@@ -1,6 +1,3 @@
-// 01-Estruturas e Tratamento -
-// 04-Objetos -
-
 export interface FormInputProps {
   label: string;
   type: string;

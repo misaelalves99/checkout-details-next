@@ -6,5 +6,3 @@ export const validateExpirationDate = (expirationDate: string): boolean => {
   
   return expDate > currentDate;
 };
-
-// 02-Funções e Métodos -

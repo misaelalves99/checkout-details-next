@@ -5,5 +5,3 @@ export const applyCreditCardMask = (value: string): string => {
     .replace(/(.{4})/g, "$1 ")
     .trim();
 };
-
-// 02-Funções e Métodos -

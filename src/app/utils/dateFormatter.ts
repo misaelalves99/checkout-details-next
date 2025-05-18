@@ -7,5 +7,3 @@ export const formatDate = (dateString: string): string => {
     day: 'numeric',
   });
 };
-
-// 02-Funções e Métodos -

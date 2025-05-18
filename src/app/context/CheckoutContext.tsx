@@ -32,7 +32,3 @@ export const useCheckout = () => {
   }
   return context;
 };
-
-// 01-Estruturas e Tratamento -
-// 06-Hooks -
-// 07-Props e Router -

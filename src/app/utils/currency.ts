@@ -5,6 +5,3 @@ export const convertCurrency = (amount: number, exchangeRate: number): number =>
 export const formatCurrency = (amount: number): string => {
   return `$${amount.toFixed(2)}`;
 };
-
-// 02-Funções e Métodos -
-// 03-Arrays -

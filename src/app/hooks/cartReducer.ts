@@ -1,7 +1,5 @@
 // app/hooks/cartReducer.ts
 
-// app/hooks/cartReducer.ts
-
 import { CartItem } from "../types/cart";
 import { Product } from "../types/product";
 

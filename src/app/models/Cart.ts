@@ -34,7 +34,3 @@ export class Cart {
     return this.items.reduce((total, item) => total + item.product.price * item.quantity, 0);
   }
 }
-
-// 01-Estruturas e Tratamento -
-// 03-Arrays -
-// 04-Objetos -

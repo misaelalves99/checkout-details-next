@@ -1,4 +1,4 @@
-import { Product } from './product'; // Certifique-se de que o caminho está correto
+import { Product } from './product';
 
 export interface Checkout {
     products: Product[];

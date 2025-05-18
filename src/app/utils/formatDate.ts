@@ -14,5 +14,3 @@ export const formatToISO = (date: string): string => {
   const newDate = new Date(date);
   return newDate.toISOString();
 };
-
-// 02-Funções e Métodos -

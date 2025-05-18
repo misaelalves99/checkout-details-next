@@ -10,5 +10,3 @@ export const formatAsCurrency = (num: number): string => {
       currency: 'USD',
     });
 };
-
-// 02-Funções e Métodos -

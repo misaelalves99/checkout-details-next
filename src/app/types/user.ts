@@ -10,6 +10,3 @@ export interface User {
   updatedAt?: string;
   avatarUrl?: string;
 }
-
-// 01-Estruturas e Tratamento -
-// 04-Objetos -

@@ -39,8 +39,6 @@ export const findInArray = <T>(arr: T[], fn: (item: T) => boolean): T | undefine
   return arr.find(fn);
 };
 
-
-
 // 04-Objetos - Funções utilitárias para manipulação de objetos
 
 // Lista as chaves de um objeto

@@ -9,7 +9,3 @@ export const toTitleCase = (str: string): string => {
 export const sanitizeString = (str: string): string => {
   return str.trim().replace(/\s+/g, " ");
 };
-
-// 02-Funções e Métodos -
-// 03-Arrays -
-

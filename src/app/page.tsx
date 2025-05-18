@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import ProductList from "./components/ProductList";
 import { Product } from "./types/product";
 import styles from "./HomePage.module.css";
-import { getProducts } from "./lib/api/products"; // IMPORTAR AQUI
+import { getProducts } from "./lib/api/products";
 
 const HomePage = () => {
   const [products, setProducts] = useState<Product[]>([]);

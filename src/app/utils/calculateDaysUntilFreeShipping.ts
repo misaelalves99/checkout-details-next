@@ -9,5 +9,3 @@ export const calculateDaysUntilFreeShipping = (freeShippingDate: string): number
 
   return daysRemaining;
 };
-
-// 03-Arrays -

@@ -1,8 +1,7 @@
 // app/lib/api/products.ts
 
-import { Product } from '@/app/types/product';
+import { Product } from '../../types/product';
 
-// Lista estática de produtos (simula o retorno do banco de dados)
 const mockProducts: Product[] = [
   {
     id: 1,
@@ -76,12 +75,10 @@ const mockProducts: Product[] = [
   },
 ];
 
-// Retorna todos os produtos
 export async function getProducts(): Promise<Product[]> {
   return mockProducts;
 }
 
-// Retorna um produto específico pelo ID
 export async function getProductById(id: number): Promise<Product | undefined> {
   return mockProducts.find((product) => product.id === id);
 }

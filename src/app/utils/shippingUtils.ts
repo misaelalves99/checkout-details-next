@@ -9,5 +9,3 @@ export const isEligibleForFreeShipping = (orderTotal: number): boolean => {
   const freeShippingThreshold = 50; // Valor para frete grátis
   return orderTotal >= freeShippingThreshold;
 };
-
-// 02-Funções e Métodos -

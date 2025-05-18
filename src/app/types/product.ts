@@ -14,6 +14,3 @@ export type Product = {
   updatedAt?: string;
   oldPrice?: number;
 };
-
-// 01-Estruturas e Tratamento -
-// 04-Objetos -
