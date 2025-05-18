@@ -3,21 +3,21 @@
 'use client';
 
 import React from 'react';
-import { useCart } from '../context/CartContext'; // Importando o contexto do carrinho
+import { useCart } from '../context/CartContext';
 import styles from './Cart.module.css';
-import CurrencyConverter from './CurrencyConverter'; // Converte o valor para outra moeda
-import CartItem from './CartItem'; // Usando o componente reutilizável para item
-import CartTotal from './CartTotal'; // Total do carrinho
+import CurrencyConverter from './CurrencyConverter';
+import CartItem from './CartItem';
+import CartTotal from './CartTotal';
 
 const Cart: React.FC = () => {
-  const { cartItems, removeFromCart, clearCart } = useCart(); // Acessando o carrinho do contexto
+  const { cartItems, removeFromCart, clearCart } = useCart();
 
   const handleRemoveItem = (productId: number) => {
-    removeFromCart(productId); // Remove o item com o ID específico
+    removeFromCart(productId);
   };
 
   const handleClearCart = () => {
-    clearCart(); // Limpa todos os itens do carrinho
+    clearCart();
   };
 
   const totalAmount = cartItems.reduce(
@@ -25,7 +25,7 @@ const Cart: React.FC = () => {
     0
   );
 
-  const exchangeRate = 0.20; // Taxa de câmbio para conversão (simulação)
+  const exchangeRate = 0.20;
 
   return (
     <div className={styles.container}>
@@ -44,21 +44,21 @@ const Cart: React.FC = () => {
                   name: item.product.name,
                   price: item.product.price,
                   quantity: item.quantity,
-                  imageUrl: item.product.imageUrl || '', // Corrigido para imageUrl
-                  category: item.product.category || '', // Corrigido para category
+                  imageUrl: item.product.imageUrl || '',
+                  category: item.product.category || '',
                 }}
-                onRemoveItem={handleRemoveItem} // Passa a função de remoção
+                onRemoveItem={handleRemoveItem}
               />
             ))}
           </div>
 
           <div className={styles.summary}>
-            <CartTotal /> {/* Não é mais necessário passar o totalAmount para CartTotal */}
+            <CartTotal />
             <button className={styles.clearButton} onClick={handleClearCart}>
               Limpar Carrinho
             </button>
             <div className={styles.converterWrapper}>
-              <CurrencyConverter amount={totalAmount} exchangeRate={exchangeRate} /> {/* Converte o valor */}
+              <CurrencyConverter amount={totalAmount} exchangeRate={exchangeRate} />
             </div>
           </div>
         </>

@@ -6,7 +6,7 @@ import { useCart } from '../context/CartContext';
 import styles from './CartTotal.module.css';
 
 const CartTotal: React.FC = () => {
-  const { cartTotal } = useCart(); // Obtendo o total diretamente do CartContext
+  const { cartTotal } = useCart();
 
   return (
     <div className={styles.cartTotalContainer}>

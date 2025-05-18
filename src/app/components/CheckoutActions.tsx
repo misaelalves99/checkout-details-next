@@ -18,9 +18,3 @@ const CheckoutActions: React.FC<Props> = ({ onFinish }) => {
 };
 
 export default CheckoutActions;
-
-// 01-Estruturas e Tratamento -
-// 05-Formulários e Eventos -
-// 06-Hooks -
-// 08-Api -
-// 09-Renderização Condicional -

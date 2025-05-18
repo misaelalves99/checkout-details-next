@@ -3,11 +3,10 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Product } from '../../types/product';
-import { CheckoutData } from '../../types/checkout';
-import styles from './CheckoutPage.module.css';
 import Image from 'next/image';
-
+import { Product } from '../../types/product';
+import { getProducts } from '../../lib/api/products';
+import styles from './CheckoutPage.module.css';
 interface ShippingOption {
   id: string;
   name: string;
@@ -30,72 +29,31 @@ const mockAddress = {
 
 const CheckoutPage = ({ params }: { params: { productId: string } }) => {
   const [product, setProduct] = useState<Product | null>(null);
-  const [checkoutData, setCheckoutData] = useState<CheckoutData | null>(null);
   const [quantity, setQuantity] = useState(1);
   const [selectedShipping, setSelectedShipping] = useState<ShippingOption>(mockShippingOptions[0]);
+
+  const [cardName, setCardName] = useState('');
+  const [cardNumber, setCardNumber] = useState('');
+  const [expiry, setExpiry] = useState('');
+  const [cvv, setCvv] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState('credit');
+
   const productId = params.productId;
 
-  const mockProducts: Product[] = [
-    {
-      id: 1,
-      name: 'Smartphone XYZ',
-      price: 1499.90,
-      description: 'Smartphone com tela OLED, 6GB de RAM e 128GB de armazenamento.',
-      imageUrl: 'https://cdn.pixabay.com/photo/2018/10/10/13/59/huawei-3737335_1280.jpg',
-      category: 'electronics',
-      oldPrice: 1699.90,
-    },
-    {
-      id: 2,
-      name: 'Camiseta Estilosa',
-      price: 59.90,
-      description: 'Camiseta 100% algodão, disponível em várias cores.',
-      imageUrl: 'https://cdn.pixabay.com/photo/2020/03/21/09/36/fashion-4953133_1280.jpg',
-      category: 'clothing',
-      oldPrice: 69.90,
-    },
-    {
-      id: 3,
-      name: 'Fone de Ouvido Bluetooth',
-      price: 299.90,
-      description: 'Fone de ouvido sem fio com excelente qualidade de som.',
-      imageUrl: 'https://cdn.pixabay.com/photo/2019/10/25/06/15/headphone-4576092_1280.jpg',
-      category: 'electronics',
-      oldPrice: 399.90,
-    },
-    {
-      id: 4,
-      name: 'Relógio de Pulso',
-      price: 249.90,
-      description: 'Relógio masculino com design moderno e resistente à água.',
-      imageUrl: 'https://cdn.pixabay.com/photo/2013/06/21/21/13/watch-140487_1280.jpg',
-      category: 'accessories',
-      oldPrice: 269.90,
-    },
-    {
-      id: 5,
-      name: 'Jaqueta Casual',
-      price: 399.90,
-      description: 'Jaqueta estilosa para dias frios.',
-      imageUrl: 'https://cdn.pixabay.com/photo/2016/11/29/13/26/casual-1869832_1280.jpg',
-      category: 'clothing',
-      oldPrice: 499.90,
-    },
-  ];
-
   useEffect(() => {
-    if (!productId) return;
+    async function fetchProduct() {
+      const products = await getProducts();
+      const found = products.find((p: Product) => p.id === Number(productId));
+      if (found) setProduct(found);
+    }
 
-    const selected = mockProducts.find((p) => p.id === Number(productId));
-    if (selected) setProduct(selected);
+    if (productId) {
+      fetchProduct();
+    }
   }, [productId]);
 
   const handleQuantityChange = (type: 'increment' | 'decrement') => {
-    if (type === 'increment') {
-      setQuantity((prevQuantity) => prevQuantity + 1);
-    } else if (type === 'decrement' && quantity > 1) {
-      setQuantity((prevQuantity) => prevQuantity - 1);
-    }
+    setQuantity((prev) => type === 'increment' ? prev + 1 : Math.max(1, prev - 1));
   };
 
   const handleShippingSelect = (option: ShippingOption) => {
@@ -108,24 +66,17 @@ const CheckoutPage = ({ params }: { params: { productId: string } }) => {
   };
 
   const handleGoToPayment = () => {
-    if (!checkoutData) {
-      alert('Por favor, preencha seus dados de entrega.');
+    if (!cardName || !cardNumber || !expiry || !cvv) {
+      alert('Por favor, preencha todas as informações do cartão.');
       return;
     }
-    alert('Ir para a página de pagamento (funcionalidade não implementada).');
-    console.log('Dados do checkout:', checkoutData);
+
+    alert('Pagamento processado com sucesso (simulado).');
     console.log('Produto:', product);
     console.log('Quantidade:', quantity);
     console.log('Opção de frete:', selectedShipping);
+    console.log('Pagamento:', { cardName, cardNumber, expiry, cvv });
   };
-
-  const handleCheckoutSubmit = (data: CheckoutData) => {
-    setCheckoutData(data);
-    alert('✅ Dados de entrega recebidos.');
-  };
-
-  // Previne aviso de função não usada (ex: futura integração do formulário)
-  console.log(typeof handleCheckoutSubmit); // eslint-disable-line no-console
 
   if (!product) {
     return <div className={styles.notFound}>Produto não encontrado.</div>;
@@ -147,7 +98,6 @@ const CheckoutPage = ({ params }: { params: { productId: string } }) => {
             <p>{mockAddress.cityState}</p>
             <p>CEP: {mockAddress.cep}</p>
             <button className={styles.changeAddressButton}>Novo endereço</button>
-            <button className={styles.changeAddressButton}>Escolher outro endereço</button>
           </div>
         </section>
 
@@ -178,9 +128,89 @@ const CheckoutPage = ({ params }: { params: { productId: string } }) => {
           ))}
         </section>
 
-        <section className={styles.checkoutFormSection}>
-          <h2>Dados para entrega (opcional)</h2>
-          {/* Exemplo futuro: <CheckoutForm onSubmit={handleCheckoutSubmit} /> */}
+        <section className={styles.paymentSection}>
+          <h2>Método de Pagamento</h2>
+
+          <div className={styles.formGroup}>
+            <label htmlFor="paymentMethod">Selecione o Método</label>
+            <select
+              id="paymentMethod"
+              value={paymentMethod}
+              onChange={(e) => setPaymentMethod(e.target.value)}
+              className={styles.selectInput}
+            >
+              <option value="credit">Cartão de Crédito</option>
+              <option value="pix">PIX</option>
+              <option value="boleto">Boleto</option>
+            </select>
+          </div>
+
+          {paymentMethod === 'credit' && (
+            <form className={styles.paymentForm}>
+              <div className={styles.formGroup}>
+                <label htmlFor="cardName">Nome no Cartão</label>
+                <input
+                  type="text"
+                  id="cardName"
+                  value={cardName}
+                  onChange={(e) => setCardName(e.target.value)}
+                  placeholder="Nome completo"
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label htmlFor="cardNumber">Número do Cartão</label>
+                <input
+                  type="text"
+                  id="cardNumber"
+                  value={cardNumber}
+                  onChange={(e) => setCardNumber(e.target.value)}
+                  placeholder="XXXX XXXX XXXX XXXX"
+                  maxLength={19}
+                />
+              </div>
+
+              <div className={styles.formRow}>
+                <div className={styles.formGroup}>
+                  <label htmlFor="expiry">Validade</label>
+                  <input
+                    type="text"
+                    id="expiry"
+                    value={expiry}
+                    onChange={(e) => setExpiry(e.target.value)}
+                    placeholder="MM/AA"
+                    maxLength={5}
+                  />
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label htmlFor="cvv">CVV</label>
+                  <input
+                    type="password"
+                    id="cvv"
+                    value={cvv}
+                    onChange={(e) => setCvv(e.target.value)}
+                    placeholder="***"
+                    maxLength={3}
+                  />
+                </div>
+              </div>
+            </form>
+          )}
+
+          {paymentMethod === 'pix' && (
+            <div className={styles.pixInfo}>
+              <p>Use o QR Code gerado na próxima etapa para efetuar o pagamento via PIX.</p>
+              <p>O pedido será confirmado automaticamente após o pagamento.</p>
+            </div>
+          )}
+
+          {paymentMethod === 'boleto' && (
+            <div className={styles.boletoInfo}>
+              <p>O boleto será gerado na próxima etapa e poderá ser pago em bancos ou lotéricas.</p>
+              <p>O prazo de compensação pode levar até 3 dias úteis.</p>
+            </div>
+          )}
         </section>
       </div>
 
@@ -204,6 +234,7 @@ const CheckoutPage = ({ params }: { params: { productId: string } }) => {
             <span>{quantity}</span>
             <button onClick={() => handleQuantityChange('increment')}>+</button>
           </div>
+          <p className={styles.summaryPrice}>R$ {(product.price * quantity).toFixed(2)}</p>
         </div>
 
         <div className={styles.summarySubtotal}>
@@ -223,7 +254,7 @@ const CheckoutPage = ({ params }: { params: { productId: string } }) => {
         </div>
 
         <button className={styles.goToPaymentButton} onClick={handleGoToPayment}>
-          Ir para pagamento
+          Confirmar Pagamento
         </button>
       </div>
     </div>
