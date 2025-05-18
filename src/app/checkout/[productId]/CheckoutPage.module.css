@@ -1,0 +1,270 @@
+/* app/checkout/[productId]/CheckoutPage.module.css */
+
+.checkoutContainer {
+  display: flex;
+  padding: 20px;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.checkoutPanel {
+  flex: 2; /* Ocupa mais espaço para as seções de endereço e frete */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.deliveryAddress,
+.shippingOptions,
+.checkoutFormSection {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.deliveryAddress h2,
+.shippingOptions h2,
+.checkoutFormSection h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.addressCard {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+}
+
+.principalAddress {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #f0ad4e;
+  color: white;
+  border-radius: 4px;
+  font-size: 0.8em;
+  margin-bottom: 10px;
+}
+
+.addressCard p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.changeAddressButton {
+  background: none;
+  border: 1px solid #007bff;
+  color: #007bff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+}
+
+.changeAddressButton:hover {
+  background-color: #e0f7fa;
+}
+
+.shippingOption {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.shippingOption.selected {
+  border-color: #007bff;
+  background-color: #e0f7fa;
+}
+
+.shippingOption input[type='radio'] {
+  margin-right: 10px;
+}
+
+.shippingOption label {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.shippingName {
+  font-weight: bold;
+  color: #333;
+}
+
+.deliveryTime {
+  color: #777;
+  font-size: 0.9em;
+}
+
+.shippingPrice {
+  font-weight: bold;
+  color: #28a745;
+}
+
+.orderSummary {
+  flex: 1; /* Ocupa menos espaço para o resumo do pedido */
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #fff;
+  position: sticky; /* Para fixar o resumo na tela ao rolar */
+  top: 20px;
+  height: fit-content;
+}
+
+.orderSummary h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.summaryItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.summaryItem:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.productInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.summaryImage {
+  border-radius: 4px;
+}
+
+.summaryProductName {
+  color: #555;
+  font-size: 0.9em;
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantityControl button {
+  background: none;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.quantityControl span {
+  font-size: 1em;
+  color: #333;
+  min-width: 20px;
+  text-align: center;
+}
+
+.summaryPrice {
+  font-weight: bold;
+  color: #333;
+}
+
+.summarySubtotal,
+.summaryShipping,
+.summaryTotal {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 1em;
+}
+
+.summaryTotal {
+  font-weight: bold;
+  font-size: 1.2em;
+  padding-top: 15px;
+  border-top: 1px solid #ddd;
+}
+
+.paymentInfo {
+  margin-top: 15px;
+  color: #666;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+.goToPaymentButton {
+  background-color: #28a745;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1em;
+  width: 100%;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.goToPaymentButton:hover {
+  background-color: #1e7e34;
+}
+
+/* Estilos para o formulário de checkout (seção opcional) */
+.checkoutFormSection form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checkoutFormSection label {
+  font-weight: bold;
+  color: #333;
+}
+
+.checkoutFormSection input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+.checkoutFormSection button[type='submit'] {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease;
+}
+
+.checkoutFormSection button[type='submit']:hover {
+  background-color: #0056b3;
+}
+
+.notFound {
+  padding: 20px;
+  text-align: center;
+  color: #dc3545;
+  font-size: 1.2em;
+}

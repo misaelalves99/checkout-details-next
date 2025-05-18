@@ -1,0 +1,29 @@
+/* 01-Estruturas e Tratamento - Container principal */
+.cartTotalContainer {
+  padding: 1.5rem;
+  margin-top: 1rem;
+  border-radius: 12px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  text-align: right;
+}
+
+/* 02-Funções e Métodos - Texto de total */
+.totalText {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #212529;
+  margin: 0;
+}
+
+/* 06-Responsividade */
+@media (max-width: 768px) {
+  .cartTotalContainer {
+    text-align: center;
+  }
+
+  .totalText {
+    font-size: 1.1rem;
+  }
+}

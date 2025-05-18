@@ -1,0 +1,272 @@
+/* app/components/ProductDetails.module.css */
+
+.productDetails {
+  max-width: 1200px;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+
+.imageGallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: 40%; /* Define uma largura inicial para a galeria de imagens */
+}
+
+.mainImageWrapper {
+  position: relative;
+  margin-bottom: 10px;
+  width: 100%; /* Garante que a imagem principal ocupe a largura total do wrapper */
+}
+
+.productImage {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  aspect-ratio: 1/1; /* Manter a proporção da imagem, ajuste se necessário */
+  object-fit: contain; /* Garante que a imagem caiba dentro do container */
+}
+
+.imageActions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.favoriteButton,
+.shareButton {
+  background: none;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favoriteButton:hover,
+.shareButton:hover {
+  background-color: #eee;
+}
+
+.thumbnails {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  width: 100%; /* Garante que as miniaturas ocupem a largura total */
+}
+
+.thumbnailWrapper {
+  width: 80px; /* Ajuste conforme necessário */
+  height: 80px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  flex-shrink: 0; /* Evita que as miniaturas encolham demais */
+}
+
+.thumbnailWrapper.activeThumbnail {
+  opacity: 1;
+  border-color: #333;
+}
+
+.thumbnailWrapper:hover {
+  opacity: 1;
+}
+
+.thumbnailImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.details {
+  flex-grow: 1; /* Permite que a seção de detalhes cresça para ocupar o espaço restante */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-basis: 60%; /* Define uma largura inicial para a seção de detalhes */
+}
+
+.productName {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.ratingAndReviews {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.ratingValue {
+  font-weight: bold;
+  color: #333;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: baseline; /* Alinha os textos pela linha de base */
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.oldPrice {
+  font-size: 1rem;
+  color: #777;
+  text-decoration: line-through;
+  margin-bottom: 5px; /* Adiciona um pouco de espaço abaixo do preço antigo */
+}
+
+.productPrice {
+  font-size: 1.8rem;
+  color: #2e7d32; /* Cor do preço */
+  font-weight: bold;
+  margin-bottom: 15px; /* Adiciona espaço abaixo do preço atual */
+}
+
+.discount {
+  background-color: #ffe0b2; /* Cor de destaque para o desconto */
+  color: #e65100; /* Cor do texto do desconto */
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.productPrice {
+  font-size: 1.8rem;
+  color: #2e7d32; /* Cor do preço */
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.paymentOptions {
+  color: #1976d2; /* Cor do link de opções de pagamento */
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.paymentOptions:hover {
+  text-decoration: underline;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.buyButton {
+  background-color: #2e7d32; /* Cor do botão Comprar */
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.buyButton:hover {
+  background-color: #1b5e20;
+}
+
+.shippingCalculator {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.shippingLabel {
+  font-weight: bold;
+}
+
+.shippingInput {
+  display: flex;
+  gap: 5px;
+}
+
+.cepInput {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.calculateButton {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.calculateButton:hover {
+  background-color: #e0e0e0;
+}
+
+/* Estilos responsivos (opcional) */
+@media (max-width: 768px) {
+  .productDetails {
+    flex-direction: column;
+  }
+
+  .imageGallery {
+    width: 100%;
+  }
+
+  .productImage {
+    width: 100%;
+  }
+
+  .thumbnails {
+    width: 100%;
+  }
+}
+
+.productFeatures {
+  margin-top: 15px;
+}
+
+.viewFeatures {
+  color: #1976d2;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.viewFeatures:hover {
+  text-decoration: underline;
+}

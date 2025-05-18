@@ -1,0 +1,30 @@
+/* 01-Estruturas e Tratamento - Container principal do footer */
+.footer {
+  background-color: #212529;
+  color: #f8f9fa;
+  padding: 2rem 1rem;
+  text-align: center;
+  border-top: 1px solid #343a40;
+  margin-top: auto;
+}
+
+/* 01-Estruturas - Subcontainer para centralizar e limitar largura */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* 03-Tipografia - Texto do rodapé */
+.text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #adb5bd;
+}
+
+/* 06-Responsividade */
+@media (max-width: 600px) {
+  .text {
+    font-size: 0.85rem;
+  }
+}

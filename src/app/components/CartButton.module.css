@@ -1,0 +1,66 @@
+/* 01-Estilo do Botão do Carrinho */
+.cartButton {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cartButton:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+.cartButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.5);
+}
+
+/* 02-Ícone do Carrinho */
+.icon {
+  font-size: 1.5rem;
+}
+
+/* 03-Contador de Itens */
+.cartCount {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: #ff6347; /* Vermelho alaranjado para destaque */
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 50%;
+  min-width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* 04-Responsividade */
+@media (max-width: 768px) {
+  .cartButton {
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  .icon {
+    font-size: 1.2rem;
+  }
+
+  .cartCount {
+    font-size: 0.8rem;
+    padding: 3px 6px;
+  }
+}

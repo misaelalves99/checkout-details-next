@@ -1,0 +1,91 @@
+/* 01-Layout Principal */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* 02-Grid de Produtos no Carrinho */
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+/* 03-Mensagem de Carrinho Vazio */
+.emptyMessage {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
+  margin-top: 50px;
+}
+
+/* 04-Resumo do Carrinho e Total */
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-end;
+  margin-top: 30px;
+}
+
+.clearButton {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+}
+
+.clearButton:hover {
+  background-color: #c9302c;
+}
+
+.clearButton:focus {
+  outline: none;
+}
+
+/* 05-Cálculo e Conversão de Moeda */
+.converterWrapper {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+}
+
+.converterWrapper span {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+/* 06-Responsividade */
+@media (max-width: 768px) {
+  .productGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .summary {
+    align-items: stretch;
+  }
+
+  .clearButton {
+    width: 100%;
+  }
+}

@@ -1,0 +1,77 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.formGroup,
+.paymentGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.inputField,
+.selectField {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  background-color: #f9fafb;
+  transition: border-color 0.3s ease;
+}
+
+.inputField:focus,
+.selectField:focus {
+  border-color: #3b82f6;
+  outline: none;
+  background-color: #fff;
+}
+
+.paymentSection {
+  background-color: #f3f4f6;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  margin-top: 1rem;
+}
+
+.paymentTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #1f2937;
+}
+
+.submitButton {
+  padding: 0.9rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #10b981;
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.submitButton:hover {
+  background-color: #059669;
+}
+
+.submitButton:active {
+  background-color: #047857;
+  transform: scale(0.97);
+}

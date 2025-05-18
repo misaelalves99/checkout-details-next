@@ -1,0 +1,71 @@
+.summary {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+  max-width: 400px;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.totalLabel {
+  font-weight: 600;
+  color: #374151;
+}
+
+.totalValue {
+  font-weight: 700;
+  color: #10b981;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 600px) {
+  .summary {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .totalValue {
+    font-size: 1.5rem;
+  }
+}
+
+/* components/CheckoutSummary.module.css */
+
+.summaryContainer {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  min-width: 280px;
+  flex: 1;
+}
+
+.title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+.item {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #444;
+}
+
+.divider {
+  margin: 1rem 0;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+.total {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #007b55;
+}
