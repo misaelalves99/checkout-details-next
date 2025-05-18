@@ -18,6 +18,3 @@ const FormButton: React.FC<FormButtonProps> = ({ text, type, onClick }) => {
 };
 
 export default FormButton;
-
-// 05-Formulários e Eventos -
-// 07-Props e Router -

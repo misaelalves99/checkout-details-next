@@ -12,7 +12,7 @@ interface CheckoutFormProps {
 }
 
 const CheckoutForm: React.FC<CheckoutFormProps> = ({ onSubmit }) => {
-  const { cartItems } = useCart(); // Corrigido para usar cartItems conforme CartContext
+  const { cartItems } = useCart();
 
   const [formData, setFormData] = useState<CheckoutData>({
     fullName: "",
@@ -54,7 +54,6 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit} className={styles.formContainer}>
-      {/* Informações do usuário */}
       {userFields.map((field) => (
         <div key={field} className={styles.formGroup}>
           <label htmlFor={field} className={styles.label}>
@@ -72,7 +71,6 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ onSubmit }) => {
         </div>
       ))}
 
-      {/* Método de pagamento */}
       <div className={styles.formGroup}>
         <label htmlFor="paymentMethod" className={styles.label}>
           Método de Pagamento
@@ -90,7 +88,6 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ onSubmit }) => {
         </select>
       </div>
 
-      {/* Informações do cartão se for creditCard */}
       {formData.paymentMethod === "creditCard" && (
         <div className={styles.paymentSection}>
           <h3 className={styles.paymentTitle}>Informações de Cartão</h3>
@@ -124,7 +121,3 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ onSubmit }) => {
 };
 
 export default CheckoutForm;
-
-// 01-Estruturas e Tratamento -
-// 05-Formulários e Eventos -
-// 06-Hooks -

@@ -1,4 +1,3 @@
-// 01 - Importações essenciais e hooks
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -7,7 +6,6 @@ import { usePathname } from "next/navigation";
 import styles from "./Navbar.module.css";
 
 const Navbar: React.FC = () => {
-  // 06 - Pathname atual para renderização condicional
   const pathname = usePathname();
   const [currentPath, setCurrentPath] = useState("");
 
@@ -19,7 +17,6 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className={styles.navbar}>
-      {/* 01 - Logo e navegação */}
       <div className={styles.container}>
         <Link href="/" className={styles.logo}>
           E-Commerce

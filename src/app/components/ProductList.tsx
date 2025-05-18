@@ -38,7 +38,7 @@ const ProductList: React.FC<ProductListProps> = ({ overrideProducts = [] }) => {
       category: product.category,
     };
     addToCart(cartItem);
-    router.push(`/products/${product.id}`); // Redireciona para página dinâmica do produto
+    router.push(`/products/${product.id}`);
   };
 
   if (!products.length) {

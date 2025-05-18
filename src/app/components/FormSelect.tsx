@@ -35,7 +35,3 @@ const FormSelect: React.FC<FormSelectProps> = ({ label, name, value, onChange, o
 };
 
 export default FormSelect;
-
-// 03-Arrays - 
-// 05-Formulários e Eventos -
-// 07-Props e Router -

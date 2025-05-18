@@ -31,7 +31,3 @@ const CurrencyConverter: React.FC<CurrencyConverterProps> = ({ amount, exchangeR
 };
 
 export default CurrencyConverter;
-
-// 02-Funções e Métodos -
-// 06-Hooks -
-// 07-Props e Router -

@@ -26,8 +26,3 @@ const CheckoutSummary: React.FC<Props> = ({ product }) => {
 };
 
 export default CheckoutSummary;
-
-
-// 02-Funções e Métodos -
-// 06-Hooks -
-// 08-Api -

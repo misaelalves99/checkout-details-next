@@ -11,8 +11,8 @@ import { AiOutlineHeart, AiOutlineShareAlt, AiFillStar } from 'react-icons/ai';
 
 interface ProductDetailsProps {
   product: Product;
-  onAddToCart?: (product: Product) => void; // agora opcional
-  oldPrice?: number; // Propriedade opcional para o preço antigo
+  onAddToCart?: (product: Product) => void;
+  oldPrice?: number;
 }
 
 const ProductDetails: React.FC<ProductDetailsProps> = ({ product, oldPrice }) => {
@@ -30,11 +30,9 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product, oldPrice }) =>
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
-    // Aqui você pode adicionar a lógica para salvar/remover dos favoritos
   };
 
   const handleShare = () => {
-    // Aqui você pode adicionar a lógica para compartilhar o produto
     console.log('Compartilhar produto');
   };
 
