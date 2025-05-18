@@ -77,8 +77,11 @@ const products: Product[] = [
   },
 ];
 
-export async function GET(request: Request, context: { params: { id: string } }) {
-  const id = parseInt(context.params.id);
+export async function GET(
+  request: Request,
+  { params }: { params: { id: string } }
+) {
+  const id = parseInt(params.id);
   const product = products.find((p) => p.id === id);
 
   if (!product) {
